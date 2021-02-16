@@ -68,7 +68,7 @@ public class LaunchScript : MonoBehaviour {
 	{
 		//Check to see if the trigger we collided with is the "InvisibleTriggerCube"
 		//that is in the middle of the Ring gameObject.
-		if (other.gameObject.name == "cube" || other.gameObject.name == "cube(1)" || other.gameObject.name == "cube(2)") {
+		if (other.gameObject.name == "invisibleRingTrigger") {
 			playerWon = true;//In OnGUI we will print you win when this is set to true
 		}
 
