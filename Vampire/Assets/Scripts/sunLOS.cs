@@ -8,12 +8,15 @@ public class sunLOS : MonoBehaviour
     public bool visible;
     public bool result;
     public string hello;
-    private GameObject userInterface;
+    private GameObject restartUI;
+    private GameObject restartButton;
     private GameObject playerCharacter;
+    private bool alive = true;
     // Start is called before the first frame update
     void Start()
     {
-      userInterface = GameObject.Find("UI");
+      restartUI = GameObject.Find("RestartUI");
+      restartButton = GameObject.Find("RestartButton");
       playerCharacter = GameObject.Find("Player");
 
     }
@@ -42,17 +45,31 @@ public class sunLOS : MonoBehaviour
       if (Physics.Raycast(ray, out hit))
       {
         hello = hit.collider.ToString();
-        if (hello == "Player (UnityEngine.BoxCollider)")
+        if (alive)
         {
+          if (hello == "Player (UnityEngine.SphereCollider)")
+          {
+            //stops player movement and shows UI to restart level
+            visible = true;
+            restartUI.SetActive(true);
+            restartButton.SetActive(true);
+            playerControls.enabled = false;
+            playerMesh.enabled = false;
+            alive = false;
+          } else {
+            visible = false;
+            restartUI.SetActive(false);
+            restartButton.SetActive(false);
+            playerControls.enabled = true;
+            playerMesh.enabled = true;
+          }
+        } else {
           visible = true;
-          userInterface.SetActive(true);
+          restartUI.SetActive(true);
+          restartButton.SetActive(true);
           playerControls.enabled = false;
           playerMesh.enabled = false;
-        } else {
-          visible = false;
-          userInterface.SetActive(false);
-          playerControls.enabled = true;
-          playerMesh.enabled = true;
+          alive = false;
         }
       }
     }

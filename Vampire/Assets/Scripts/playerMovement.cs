@@ -26,10 +26,10 @@ public class playerMovement : MonoBehaviour
     void FixedUpdate()
     {
       Move();
-      Turn();
+      TurnCamera();
     }
 
-    private void Turn()
+    private void TurnCamera()
     {
       float turn = turnInput * lookSpeed * Time.deltaTime;
 
