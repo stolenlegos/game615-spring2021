@@ -7,7 +7,8 @@ public class playerMovement : MonoBehaviour
   public float moveSpeed;
   public float lookSpeed;
   private Rigidbody rb;
-  private float movementInput;
+  private float forwardInput;
+  private float sideInput;
   private float turnInput;
 
     // Start is called before the first frame update
@@ -19,8 +20,22 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        turnInput = Input.GetAxis("Horizontal");
-        movementInput = Input.GetAxis("Vertical");
+      if (Input.anyKey)
+      {
+        if (Input.GetKey(KeyCode.Q))
+        {
+          turnInput = -1;
+        }
+        if (Input.GetKey(KeyCode.E))
+        {
+          turnInput = 1;
+        }
+      } else {
+        turnInput = 0;
+      }
+
+      sideInput = Input.GetAxis("Horizontal");
+      forwardInput = Input.GetAxis("Vertical");
     }
 
     void FixedUpdate()
@@ -39,8 +54,9 @@ public class playerMovement : MonoBehaviour
 
     private void Move()
     {
-      Vector3 movement = transform.forward * movementInput * moveSpeed * Time.deltaTime;
+      Vector3 movementForward = transform.forward * forwardInput * moveSpeed * Time.deltaTime;
+      Vector3 movementSide = transform.right * sideInput * moveSpeed * Time.deltaTime;
 
-      rb.MovePosition(rb.position + movement);
+      rb.MovePosition(rb.position + movementForward + movementSide);
     }
 }
