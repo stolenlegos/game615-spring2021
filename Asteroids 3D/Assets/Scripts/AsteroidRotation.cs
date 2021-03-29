@@ -10,9 +10,9 @@ public class AsteroidRotation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rotationX = Random.Range(-10, 10);
-        rotationY = Random.Range(-10, 10);
-        rotationZ = Random.Range(-10, 10);
+        rotationX = Random.Range(-0.5f, 0.5f);
+        rotationY = Random.Range(-0.5f, 0.5f);
+        rotationZ = Random.Range(-0.5f, 0.5f);
     }
 
     // Update is called once per frame

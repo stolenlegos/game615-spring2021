@@ -27,40 +27,40 @@ public class newShipMovement : MonoBehaviour
 //Pitch Control
       if (Input.GetKey(KeyCode.W))
       {
-        pitch -= Time.deltaTime / 2;
+        pitch -= Time.deltaTime * 15;
       }
 
       if (Input.GetKey(KeyCode.S))
       {
-        pitch += Time.deltaTime / 2;
+        pitch += Time.deltaTime * 15;
       }
 
 //Roll Control
       if (Input.GetKey(KeyCode.A))
       {
-        roll += Time.deltaTime / 2;
+        roll += Time.deltaTime * 15;
       }
 
       if (Input.GetKey(KeyCode.D))
       {
-        roll -= Time.deltaTime / 2;
+        roll -= Time.deltaTime * 15;
       }
 
 //Yaw Control
       if (Input.GetKey(KeyCode.Q))
       {
-        yaw -= Time.deltaTime / 2;
+        yaw -= Time.deltaTime * 15;
       }
 
       if (Input.GetKey(KeyCode.E))
       {
-        yaw += Time.deltaTime / 2;
+        yaw += Time.deltaTime * 15;
       }
 
 //Forward velocity Control
-      if (Input.GetKey(KeyCode.Space))
+      if (Input.GetKey(KeyCode.Space) && forwardVelocity < 2200)
       {
-        forwardVelocity += Time.deltaTime * 1.5f;
+        forwardVelocity += Time.deltaTime * 100;
       }
 
 //slows all rotational velocity over time while left shift is pressed
